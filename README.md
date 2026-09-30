@@ -1,17 +1,106 @@
 # face_recognition_demo
 
-A new Flutter project.
+Demo nhận diện khuôn mặt
+Ứng dụng sử dụng camera để thu nhận hình ảnh khuôn mặt, Google ML Kit để phát hiện khuôn mặt, MobileFaceNet để trích xuất đặc trưng khuôn mặt và Cosine Similarity để so sánh với khuôn mặt đã đăng ký.
 
-## Getting Started
+## Công nghệ sử dụng
 
-This project is a starting point for a Flutter application.
+Framework: Flutter
+Ngôn ngữ: Dart
+Nền tảng: Android
+Camera: Flutter Camera
+Face Detection: Google ML Kit
+Face Recognition: MobileFaceNet
+Model format: TensorFlow Lite (.tflite)
+Native bridge: Dart FFI / TensorFlow Lite C API
+Face matching: Cosine Similarity
+Local storage: SharedPreferences + JSON
+IDE: Android Studio
 
-A few resources to get you started if this is your first Flutter project:
+## Kiến trúc hệ thống
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+```text
+Camera
+   ↓
+Camera Frame
+   ↓
+Google ML Kit Face Detection
+   ↓
+Face Bounding Box
+   ↓
+Crop khuôn mặt
+   ↓
+Resize 112 × 112
+   ↓
+Normalize pixel
+   ↓
+MobileFaceNet
+   ↓
+Face Embedding
+   ↓
+Cosine Similarity
+   ↓
+Threshold = 0.70
+   ↓
+Match / Not Match
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Công nghệ sử dụng
+### Yêu cầu
+
+Cần cài đặt:
+
+Flutter SDK
+Android Studio
+Android SDK
+Android Emulator hoặc điện thoại Android
+Git
+
+- Kiểm tra Flutter:
+
+flutter doctor
+Clone Project
+git clone https://github.com/NguyenXuanPhuNXP/Face_Recog_demo.git
+
+- Di chuyển vào thư mục project:
+
+cd Face_Recog_demo
+
+- Cài đặt dependencies:
+
+flutter pub get
+
+- Kiểm tra thiết bị Android:
+
+flutter devices
+
+- Chạy ứng dụng:
+
+flutter run
+- Chạy bằng Android Studio
++ Bước 1
+Mở Android Studio.
+
++ Bước 2
+Chọn:
+Open
+
+và chọn thư mục:
+Face_Recog_demo
++ Bước 3
+Chờ Android Studio tải Gradle và các dependencies.
+
++ Bước 4
+Mở Terminal trong Android Studio:
+flutter pub get
+
++ Bước 5
+Khởi động Android Emulator hoặc kết nối điện thoại Android.
+Kiểm tra:
+flutter devices
+
++ Bước 6
+Chạy project:
+flutter run
+Hoặc nhấn nút:
+Run ▶
+trên Android Studio.
